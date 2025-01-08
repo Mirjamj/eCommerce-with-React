@@ -1,4 +1,3 @@
-
 import Herobanner from '../components/Herobanner'
 import Bestsellers from '../components/Bestsellers'
 import Offers from '../components/Offers'
