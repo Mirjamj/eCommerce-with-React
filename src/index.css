@@ -5,6 +5,7 @@
   --clr-subtext: rgb(243, 242, 242);
   --clr-btn: rgb(250, 49, 80);
   --clr-bg-theme: rgb(242, 231, 232);
+  --clr-error: rgba(255, 0, 0, 0.789);
 }
 
 ul, a{
@@ -164,6 +165,24 @@ form .search-bar.show {
   border-left: 0;
   border-radius: 0 50px 50px 0;
   padding-inline: 2em;
+}
+
+/* contact */
+
+.contact-bg {
+  background-color: var(--clr-subtext);
+  height: 20vh;
+}
+
+.contact-form {
+  border: 1px solid var(--clr-subtext);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.validation-error, .form-confirmation {
+  color: var(--clr-error);
+  font-size: .9rem;
 }
 
 /* footer */
