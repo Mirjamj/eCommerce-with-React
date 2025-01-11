@@ -10,6 +10,8 @@ import Products from './pages/Products'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import NotFound from './pages/NotFound'
+import Cart from './pages/Cart'
+import Productpage from './pages/Productpage'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,8 +19,10 @@ createRoot(document.getElementById('root')).render(
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/contact' element={<Contact />} />
+        <Route path='/Products' element={<Products />} />
+        <Route path='Contact' element={<Contact />} />
+        <Route path='/Cart' element={<Cart />} />
+        <Route path='/Productpage' element={<Productpage />} />
 
         <Route path='*' element={<NotFound />} />
       </Routes>

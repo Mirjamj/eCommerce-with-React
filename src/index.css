@@ -24,6 +24,10 @@ ul, a{
   text-decoration: none;
 }
 
+.cart-brand {
+  color: var(--clr-text);
+}
+
 .text-pink {
   color: var(--clr-btn);
 }
@@ -52,6 +56,19 @@ ul, a{
 .img-card {
   max-width: 20rem;
   height: auto;
+  width: 100%;
+}
+
+.img-cart {
+  max-width: 9rem;
+
+  @media (width <576px) {
+    max-width: 4rem;
+  }
+}
+
+.img-product-page {
+  max-width: 25rem;
   width: 100%;
 }
 
@@ -182,6 +199,13 @@ form .search-bar.show {
 
 .validation-error, .form-confirmation {
   color: var(--clr-error);
+  font-size: .9rem;
+}
+
+/* cart */
+
+.cart p {
+  margin: 0;
   font-size: .9rem;
 }
 
