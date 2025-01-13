@@ -3,8 +3,8 @@
   --clr-main: #000000;
   --clr-text: rgb(156, 152, 152);
   --clr-subtext: rgb(243, 242, 242);
-  --clr-btn: rgb(250, 49, 80);
-  --clr-bg-theme: rgb(242, 231, 232);
+  --clr-btn: rgb(0, 0, 0);
+  --clr-bg-theme: rgb(93, 90, 90);
   --clr-error: rgba(255, 0, 0, 0.789);
 }
 
@@ -67,11 +67,9 @@ ul, a{
   }
 }
 
-.img-product-page {
-  max-width: 25rem;
+img {
   width: 100%;
 }
-
 /*navbar*/
 
 .navbar-desktop {
@@ -164,6 +162,21 @@ form .search-bar.show {
   max-width: 20rem;
   width: 100%;
   height: 100%;
+}
+
+/* trending */
+
+.overflow-auto::-webkit-scrollbar{
+  display: none;
+}
+
+.overflow-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.btn-chevron {
+  border: 1px solid black;
 }
 
 /* subscription */

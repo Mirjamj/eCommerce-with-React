@@ -107,7 +107,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="container col-md-6 col-lg-5 my-4">
+    <div className="col-md-6 col-lg-5 my-4">
       <form onSubmit={handleSubmit} className='contact-form'>
         <div className="form-group mb-4">
           <label htmlFor="firstName">First name</label>
