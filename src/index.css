@@ -45,6 +45,16 @@ ul, a{
   padding-block: .4em;
 }
 
+.cart-remove {
+  background: none;
+  border: none;
+}
+
+.quantity-btn {
+  background: none;
+  border: none;
+}
+
 /*images*/
 
 .img-hero {
@@ -220,6 +230,12 @@ form .search-bar.show {
 .cart p {
   margin: 0;
   font-size: .9rem;
+}
+
+.quantity-cart {
+  border: 1px solid black;
+  padding: .2em .5em;
+  border-radius: 3px;
 }
 
 /* footer */
