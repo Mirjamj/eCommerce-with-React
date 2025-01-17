@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router'
 import { useState } from 'react'
+import CustomNavLink from './CustomNavLink';
 
 const Navbar = () => {
 
@@ -13,22 +14,35 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-4">
       <div className="container-fluid navbar-desktop">
-        <NavLink className="navbar-brand" to="/"><img src="./src/assets/images/logotype.png" className="logotype" alt="Logotype bmerketo" /></NavLink>
+        <NavLink className="navbar-brand" to="/" aria-label='Go to homepage' tabIndex={1}>
+          <img src="./src/assets/images/logotype.png" className="logotype" alt="Logotype bmerketo" />
+        </NavLink>
+        <div className='navbar-nav d-flex align-items-center nav-visible'>
+          <div className="d-flex">
 
-        <ul className='navbar-nav d-flex align-items-center nav-visible'>
-          <form className="d-flex">
             <label htmlFor="search-name" className='visually-hidden'>Search</label>
-            <button className="btn nav-link" type="button" onClick={toggleSearchBar}><i className="fa-solid fa-magnifying-glass"></i></button>
+            <button className="btn nav-link p-2" type="button" onClick={toggleSearchBar} aria-label='Toggle search bar' tabIndex={5}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
             {showSearchBar && (
-              <input id="search-input" className={`ms-2 search-bar ${showSearchBar ? 'show' : ''}`} type="search" placeholder="Search" aria-label="Search" />
-            )}</form>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="#"><span className='user'>Log in</span> <i className="fa-solid fa-user" aria-hidden="true"></i></NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/cart"><i className="fa-solid fa-cart-shopping" aria-hidden="true"></i></NavLink>
-          </li>
-        </ul>
+              <input id="search-input" className={`ms-2 search-bar ${showSearchBar ? 'show' : ''}`} type="search" placeholder="Search" aria-label="Search" tabIndex={6} />
+            )}
+
+            <ul className='navbar-nav d-flex align-items-center flex-row'>
+              <li className="nav-item">
+                <NavLink className="nav-link p-2" to="#" aria-label='Go to login page' tabIndex={7}>
+                  <span className='user nav-link'>Log in</span>
+                  <i className="fa-solid fa-user nav-link" aria-hidden="true"></i>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link p-2" to="/cart" aria-label='Go to cart' tabIndex={8}>
+                  <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -36,14 +50,14 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item" tabIndex={1}>
-              <NavLink className="nav-link active text-uppercase" aria-current="page" to="/">Home</NavLink>
+            <li className="nav-item">
+              <CustomNavLink to="/" tabIndex={2} aria-label='Go to homepage'>Home</CustomNavLink>
             </li>
-            <li className="nav-item" tabIndex={2}>
-              <NavLink className="nav-link text-uppercase" to="/products">Products</NavLink>
+            <li className="nav-item">
+              <CustomNavLink to="/products" tabIndex={3} aria-label='Go to product page'>Products</CustomNavLink>
             </li>
-            <li className="nav-item" tabIndex={3}>
-              <NavLink className="nav-link text-uppercase" to="/contact">Contact</NavLink>
+            <li className="nav-item">
+              <CustomNavLink to="/contact" tabIndex={4} aria-label="Go to contact page">Contact</CustomNavLink>
             </li>
           </ul>
         </div>

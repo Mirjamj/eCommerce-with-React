@@ -2,7 +2,7 @@ import React from 'react'
 
 const Productpage = () => {
   return (
-    <div className='container d-md-flex my-4 '>
+    <div className='container d-md-flex my-4'>
       <img src="./src/assets/images/placeholderproduct.png" className='img-product-page' alt="" />
       <div className="d-md-flex flex-md-column mx-md-3">
         <div className='d-flex justify-content-between align-items-center mt-2 mt-md-0 d-md-block'>

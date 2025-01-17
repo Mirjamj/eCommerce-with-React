@@ -4,21 +4,21 @@ import { Link } from 'react-router'
 const Categories = () => {
   return (
     <div>
-      <ul className="categories gap-3 d-flex p-0 justify-content-center">
+      <ul className="categories d-flex p-0 justify-content-center mt-4">
         <li>
-          <Link className="cat-link" to="#">All</Link>
+          <Link className="cat-link p-2" to="#">All</Link>
         </li>/
         <li>
-          <Link className="cat-link" to="#">Laptops</Link>
+          <Link className="cat-link p-2" to="#">Laptops</Link>
         </li>/
         <li>
-          <Link className="cat-link" to="#">Phones</Link>
+          <Link className="cat-link p-2" to="#">Phones</Link>
         </li>/
         <li>
-          <Link className="cat-link" to="#">TV</Link>
+          <Link className="cat-link p-2" to="#">TV</Link>
         </li>/
         <li>
-          <Link className="cat-link" to="#">PC</Link>
+          <Link className="cat-link p-2" to="#">PC</Link>
         </li>
       </ul>
     </div>
