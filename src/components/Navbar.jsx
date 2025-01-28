@@ -1,15 +1,10 @@
 import { NavLink } from 'react-router'
-import { useState } from 'react'
 import CustomNavLink from './CustomNavLink';
+import Cartdropdown from './Cartdropdown';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-
-  const [showSearchBar, setShowSearchBar] = useState(false);
-
-  //Toggle for search bar when magnifier clicked
-  const toggleSearchBar = (e) => {
-    setShowSearchBar(!showSearchBar);
-  }
+  const { totalQuantity } = useSelector(state => state.shoppingCart)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-4">
@@ -21,13 +16,10 @@ const Navbar = () => {
           <div className="d-flex">
 
             <label htmlFor="search-name" className='visually-hidden'>Search</label>
-            <button className="btn nav-link p-2" type="button" onClick={toggleSearchBar} aria-label='Toggle search bar' tabIndex={5}>
+            <button className="btn nav-link p-2" type="button" aria-label='Toggle search bar' tabIndex={5}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
-            {showSearchBar && (
-              <input id="search-input" className={`ms-2 search-bar ${showSearchBar ? 'show' : ''}`} type="search" placeholder="Search" aria-label="Search" tabIndex={6} />
-            )}
-
+            <input className='ms-2 search-bar border-0' type="search" placeholder="Search" aria-label="Search" tabIndex={6} />
             <ul className='navbar-nav d-flex align-items-center flex-row'>
               <li className="nav-item">
                 <NavLink className="nav-link p-2" to="#" aria-label='Go to login page' tabIndex={7}>
@@ -35,10 +27,17 @@ const Navbar = () => {
                   <i className="fa-solid fa-user nav-link" aria-hidden="true"></i>
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link p-2" to="/cart" aria-label='Go to cart' tabIndex={8}>
+              <li className="nav-item position-relative">
+                {
+                  totalQuantity > 0 && (
+                    <div className='cart-notification position-absolute'>
+                      {totalQuantity}
+                    </div>
+                  )
+                }
+                <Cartdropdown>
                   <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-                </NavLink>
+                </Cartdropdown>
               </li>
             </ul>
           </div>

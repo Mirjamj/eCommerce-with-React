@@ -57,11 +57,11 @@ const Trending = () => {
 
       <div className="d-flex justify-content-center">
         <div className="d-flex align-items-center">
-          <button className="btn btn-chevron me-2" onClick={() => scroll('left')}>
+          <button onClick={() => scroll('left')} className="btn btn-chevron me-2">
             <i className='bi bi-chevron-left'></i>
           </button>
         </div>
-        <button className="btn btn-chevron ms-2" onClick={() => scroll('right')}>
+        <button onClick={() => scroll('right')} className="btn btn-chevron ms-2">
           <i className='bi bi-chevron-right'></i>
         </button>
       </div>

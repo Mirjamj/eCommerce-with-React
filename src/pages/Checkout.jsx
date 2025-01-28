@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cart = () => {
+const Checkout = () => {
   return (
     <section className='cart container'>
       <h1 className='text-center fw-light pb-4'>Cart</h1>
@@ -32,4 +32,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Checkout
