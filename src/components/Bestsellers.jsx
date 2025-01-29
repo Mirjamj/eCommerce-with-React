@@ -10,7 +10,7 @@ const Bestsellers = ({ products }) => {
   return (
     <section id="bestsellers" className='my-5'>
       <div className='container d-flex flex-column align-items-center gap-3'>
-        <h2>Bestsellers</h2>
+        <h2 className='mt-5'>Bestsellers</h2>
         <Categories />
         <div className="scroll-container">
           <div className="scroll-content">

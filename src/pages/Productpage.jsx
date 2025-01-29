@@ -12,6 +12,13 @@ const Productpage = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  const [isExpanded, setIsExpanded] = useState(false)
+  const maxChars = 200
+
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded)
+  }
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -61,10 +68,26 @@ const Productpage = () => {
         <div className='d-flex justify-content-between align-items-center mt-2 mt-md-0 d-md-block'>
           <h1 className='fs-4'>{product?.name}</h1>
           <div className="price-info d-flex gap-2">
-            <p className='current-price'>{product?.price} kr</p>
+            <p className='current-price fw-bold'>{product?.price} kr</p>
           </div>
         </div>
-        <p className='fs-6'>{product?.description}</p>
+        <p className='fs-6 d-inline'>
+          {
+            isExpanded
+              ? product?.description
+              : product?.description?.slice(0, maxChars) + (product?.description?.length > maxChars ? '...' : '')
+          }
+          {product?.description?.length > maxChars && (
+            <button onClick={toggleDescription} className="btn btn-link p-0 ms-1 align-baseline">
+              {
+                isExpanded
+                  ? 'View less'
+                  : 'View more'
+              }
+              <i className={`fa-solid ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} ms-1`}></i>
+            </button>
+          )}
+        </p>
         <button onClick={handleClick} className='btn btn-main mt-md-4 w-100'>Add to cart</button>
       </div>
     </div>

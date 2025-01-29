@@ -1,6 +1,7 @@
 import Product from './Product'
 
 const Productlisting = ({ products }) => {
+
   return (
     <div className="container">
       <div className='row'>
@@ -18,9 +19,9 @@ const Productlisting = ({ products }) => {
 
 Productlisting.Skeleton = () => {
   return (
-    <div className="row container">
-      <div className='g-4 col-6 col-md-4 col-lg-3 product d-flex'>
-        <Product />
+    <div className='container d-flex justify-content-center my-5'>
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
       </div>
     </div>
   )

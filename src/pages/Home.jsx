@@ -6,6 +6,7 @@ import Subscription from '../components/subscription'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getProducts } from '../store/features/products/productsSlice'
+import Productlisting from '../components/Productlisting'
 
 
 const Home = () => {
@@ -21,11 +22,10 @@ const Home = () => {
   if (error) {
     return (
       <div>
-        <p>{error}</p>
+        <p className='text-red text-center my-3'>{error}</p>
       </div>
     )
   }
-
 
   return (
     <div>

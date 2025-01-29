@@ -2,7 +2,10 @@ import React from 'react'
 import Product from './Product'
 import { useRef } from 'react';
 
-const Trending = () => {
+const Trending = ({ products }) => {
+
+  const trendingIDs = ['658b33d25b510998a5044748', '658af3e7d711cabe3c94045e', '658b3cd65b510998a5044763', '658b352b5b510998a5044751', '658b33155b510998a504473f', '658af3e7d711cabe3c94045e', '658b3d0d5b510998a5044766', '658b3bc35b510998a504475a']
+  const trendingToShow = products.filter(product => trendingIDs.includes(product._id)).sort((a, b) => trendingIDs.indexOf(a._id) - trendingIDs.indexOf(b._id))
 
   const scrollRef = useRef(null);
 
@@ -10,7 +13,7 @@ const Trending = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -300 : 300,
-        behvior: 'smooth'
+        behavior: 'smooth'
       })
     }
   }
@@ -18,40 +21,15 @@ const Trending = () => {
   return (
     <div className='container py-5'>
       <h4 className='text-center mb-4'>Products trending this week</h4>
-
-      <div className="overflow-auto" style={{ display: 'flex', gap: '1rem', scrollSnapType: 'x mandatory' }} ref={scrollRef}>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
-        </div>
-        <div className="col-6 col-md-4 col-lg-3" style={{ scrollSnapAlign: 'start' }}>
-          <Product />
+      <div className="scroll-container" ref={scrollRef}>
+        <div className="scroll-content gap-5">
+          {
+            trendingToShow.map(product => (
+              <div key={product._id}>
+                <Product product={product} />
+              </div>
+            ))
+          }
         </div>
       </div>
 
