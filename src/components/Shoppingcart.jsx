@@ -1,10 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router'
 import Cartitem from './Cartitem'
+import { clearCart } from '../store/features/products/ShoppingCart/shoppingCartSlice'
 
-const Shoppingcart = ({ setIsOpen }) => {
+const Shoppingcart = ({ setIsOpen, isCheckoutPage }) => {
+
   const { cart, totalPrice } = useSelector(state => state.shoppingCart)
+  const dispatch = useDispatch()
+
   return (
     <div className='p-2'>
       <div>
@@ -18,7 +22,7 @@ const Shoppingcart = ({ setIsOpen }) => {
         {
           cart.length > 0 && (
             <div>
-              <p>Your items</p>
+              <p className='m-2'>Your items</p>
             </div>
           )
         }
@@ -30,7 +34,11 @@ const Shoppingcart = ({ setIsOpen }) => {
       </div>
       <div className="d-flex justify-content-between align-items-center mt-4">
         <p className='m-0'>Total: {totalPrice} kr</p>
-        <Link onClick={() => setIsOpen(false)} className='btn btn-main' to="/checkout">Checkout</Link>
+        {
+          isCheckoutPage
+            ? <button onClick={() => dispatch(clearCart())} className='btn btn-main'>Place order</button>
+            : <Link onClick={() => setIsOpen(false)} className='btn btn-main' to="/checkout">Checkout</Link>
+        }
       </div>
     </div>
   )

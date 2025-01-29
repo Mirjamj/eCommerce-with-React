@@ -103,12 +103,6 @@ ul, a{
 
 /*images*/
 
-.img-hero {
-  max-width: 30rem;
-  height: auto;
-  width: 100%;
-}
-
 .img-card {
   max-width: 20rem;
   height: auto;
@@ -233,9 +227,38 @@ img {
 /* hero banner */
 
 #heroBanner {
-  background-color: var(--clr-subtext);
   height: 50vh;
+
+  @media(width <768px) {
+    background-color: var(--clr-subtext);
+
+  }
 }
+
+/* bestsellers */
+
+.scroll-container {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 1rem;
+  min-width: max-content;
+}
+
+.scroll-container .product-card {
+  scroll-snap-align: start;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* offers */
 

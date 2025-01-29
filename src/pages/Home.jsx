@@ -26,18 +26,13 @@ const Home = () => {
     )
   }
 
-  const bestsellers = products.filter(product => product.category === 'bestseller')
-  const offers = products.filter(product => product.category === 'offer')
-  const trending = products.filter(product => product.category === 'trending')
-
-
 
   return (
     <div>
       <Herobanner />
-      <Bestsellers products={bestsellers} />
-      <Offers products={offers} />
-      <Trending products={trending} />
+      <Bestsellers products={products} />
+      <Offers products={products} />
+      <Trending products={products} />
       <Subscription />
     </div>
   )
