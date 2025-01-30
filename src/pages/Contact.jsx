@@ -1,7 +1,7 @@
 import React from 'react'
-import ContactHero from '../components/ContactHero'
-import ContactForm from '../components/ContactForm'
-import Location from '../components/Location'
+import ContactHero from '../components/contact/ContactHero'
+import ContactForm from '../components/contact/ContactForm'
+import Location from '../components/contact/Location'
 
 const Contact = () => {
   return (

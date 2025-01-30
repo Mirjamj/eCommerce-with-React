@@ -2,9 +2,10 @@ import { useState } from "react"
 import ReactDOM from 'react-dom'
 import Shoppingcart from "./Shoppingcart"
 
+// Cartdropdown component: Manages the cart dropdown visibility and handles interactions
 const Cartdropdown = ({ children }) => {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false) // State to track if the dropdown is open or closed
 
   return (
     <>
@@ -24,6 +25,7 @@ const Cartdropdown = ({ children }) => {
   )
 }
 
+// CartdropdownBg component: Creates a transparent overlay that closes the dropdown when clicked
 export default Cartdropdown
 
 const CartdropdownBg = ({ setIsOpen }) => {

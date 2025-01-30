@@ -15,7 +15,6 @@ ul, a{
   color: var(--clr-main);
 }
 
-
 *:focus-visible {
   box-shadow: 0 0 0 0.1rem var(--clr-main)!important;
   outline: none;
@@ -24,7 +23,6 @@ ul, a{
 .inset-0 {
   inset: 0;
 }
-
 
 /* fonts */
 
@@ -278,7 +276,6 @@ img {
   display: none;
 }
 
-
 /* offers */
 
 #offers {
@@ -326,7 +323,6 @@ img {
 
 .contact-bg {
   background-color: var(--clr-subtext);
-  height: 20vh;
 }
 
 .contact-form {

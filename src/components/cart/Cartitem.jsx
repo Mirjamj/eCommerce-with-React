@@ -1,18 +1,22 @@
 import { useDispatch } from 'react-redux'
-import { addToCart, removeItem, removeOne } from '../store/features/products/ShoppingCart/shoppingCartSlice'
+import { addToCart, removeItem, removeOne } from '../../store/features/products/ShoppingCart/shoppingCartSlice'
 
+// Cartitem component: Displays an individual item in the cart and allows quantity adjustments
 const Cartitem = ({ item }) => {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // Initializing the Redux dispatch function
 
+  // Function to increase the quantity of the item in the cart
   const addItemToCart = () => {
     dispatch(addToCart(item.product))
   }
 
+  // Function to decrease the quantity of the item (removes one unit)
   const removeItemFromCart = () => {
     dispatch(removeOne(item.product._id))
   }
 
+  // Function to completely remove the item from the cart
   const deleteItem = () => {
     dispatch(removeItem(item.product._id))
   }

@@ -1,16 +1,20 @@
 import { NavLink } from 'react-router'
 import CustomNavLink from './CustomNavLink';
-import Cartdropdown from './Cartdropdown';
+import Cartdropdown from '../cart/Cartdropdown';
 import { useSelector } from 'react-redux';
+import logo from "/src/assets/images/logotype.png";
+
 
 const Navbar = () => {
+
+  // Using useSelector to get the total quantity of items in the shopping cart from the Redux store
   const { totalQuantity } = useSelector(state => state.shoppingCart)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white py-4">
       <div className="container-fluid navbar-desktop">
         <NavLink className="navbar-brand" to="/" aria-label='Go to homepage' tabIndex={1}>
-          <img src="./src/assets/images/logotype.png" className="logotype" alt="Logotype bmerketo" />
+          <img src={logo} className="logotype" alt="Logotype bmerketo" />
         </NavLink>
         <div className='navbar-nav d-flex align-items-center nav-visible'>
           <div className="d-flex">
@@ -28,10 +32,11 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item position-relative">
+                {/* Display cart notification if there are items in the cart */}
                 {
                   totalQuantity > 0 && (
                     <div className='cart-notification position-absolute'>
-                      {totalQuantity}
+                      {totalQuantity} {/* Displaying the total quantity of items in the cart */}
                     </div>
                   )
                 }

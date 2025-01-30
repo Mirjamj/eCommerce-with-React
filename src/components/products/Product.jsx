@@ -1,13 +1,14 @@
 import { Link } from 'react-router'
-import { addToCart } from '../store/features/products/ShoppingCart/shoppingCartSlice'
+import { addToCart } from '../../store/features/products/ShoppingCart/shoppingCartSlice'
 import { useDispatch } from 'react-redux'
 
 const Product = ({ product = {} }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // Creating a dispatch function to interact with Redux
 
+  // Function to handle adding the product to the cart
   const handleClick = (e) => {
-    e.stopPropagation()
-    dispatch(addToCart(product))
+    e.stopPropagation() // Prevents event bubbling
+    dispatch(addToCart(product)) // Dispatching addToCart action with the product
   }
 
   return (
@@ -23,7 +24,6 @@ const Product = ({ product = {} }) => {
         </button>
       </div>
     </div>
-
   )
 }
 

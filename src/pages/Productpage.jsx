@@ -6,43 +6,50 @@ import { addToCart } from '../store/features/products/ShoppingCart/shoppingCartS
 
 const Productpage = () => {
 
+  // Extract product_id from the route parameters using useParams hook
   const { product_id } = useParams()
 
-  const [product, setProduct] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
+  // Component state hooks
+  const [product, setProduct] = useState(null) // Store the fetched product details
+  const [error, setError] = useState(null) // Store any errors from the fetch operation
+  const [loading, setLoading] = useState(false) // Track loading state during API call
 
-  const [isExpanded, setIsExpanded] = useState(false)
-  const maxChars = 200
+  const [isExpanded, setIsExpanded] = useState(false) // Track if the product description is expanded or not
+  const maxChars = 200 // Define the maximum number of characters to display in the description before truncating
 
+  // Toggle the expanded state of the product description (to show more or less)
   const toggleDescription = () => {
     setIsExpanded(!isExpanded)
   }
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // Dispatch function to interact with Redux
 
+  // useEffect hook to fetch product data when the component is mounted or product_id changes
   useEffect(() => {
     const getProducts = async () => {
-      setLoading(true)
+      setLoading(true) // Start loading before the API request
 
       try {
+        // Make an API request to fetch the product details using the product_id
         const res = await axios.get(`https://js2-ecommerce-api.vercel.app/api/products/${product_id}`)
-        setProduct(res.data)
+        setProduct(res.data) // Set the fetched product details to state
       } catch (error) {
-        setError('Something went wrong....')
+        setError('Something went wrong....') // Set an error message if the fetch fails
         console.log(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false) // Set loading to false after the API request is complete (whether successful or not)
       }
     }
 
-    getProducts()
-  }, [product_id])
+    getProducts() // Call the function to fetch the product data
+  }, [product_id]) // Dependency array, the effect will rerun if product_id changes
 
+  // Handle adding the product to the shopping cart by dispatching the addToCart action
   const handleClick = () => {
-    dispatch(addToCart(product))
+    dispatch(addToCart(product)) // Dispatch addToCart action with the selected product
   }
 
+  // Return the error message UI if there's an error fetching the product
   if (error) {
     return (
       <div>
@@ -51,6 +58,7 @@ const Productpage = () => {
     )
   }
 
+  // Return a loading spinner while the product data is being fetched
   if (loading) {
     return (
       <div className='container d-flex justify-content-center my-5'>
@@ -61,10 +69,11 @@ const Productpage = () => {
     )
   }
 
+  // Return the product details UI if the data is successfully fetched
   return (
-    <div className='container d-lg-flex my-4'>
-      <img src={product?.images?.[0]} className='img-product-page' alt={product?.name} />
-      <div className="d-md-flex flex-md-column mx-md-3">
+    <div className='container d-md-flex my-4 justify-content-md-evenly'>
+      <img src={product?.images?.[0]} className='img-product-page d-flex m-auto' alt={product?.name} />
+      <div className="d-md-flex flex-md-column mx-md-3 col-md-5">
         <div className='d-flex justify-content-between align-items-center mt-2 mt-md-0 d-md-block'>
           <h1 className='fs-4'>{product?.name}</h1>
           <div className="price-info d-flex gap-2">
@@ -72,6 +81,7 @@ const Productpage = () => {
           </div>
         </div>
         <p className='fs-6 d-inline'>
+          {/*Conditionally render the product description (shortened or full)*/}
           {
             isExpanded
               ? product?.description
@@ -79,6 +89,7 @@ const Productpage = () => {
           }
           {product?.description?.length > maxChars && (
             <button onClick={toggleDescription} className="btn btn-link p-0 ms-1 align-baseline">
+              {/*Show the "View more" or "View less" button if the description is longer than the maxChars*/}
               {
                 isExpanded
                   ? 'View less'

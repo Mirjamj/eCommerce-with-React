@@ -1,24 +1,29 @@
-import Herobanner from '../components/Herobanner'
-import Bestsellers from '../components/Bestsellers'
-import Offers from '../components/Offers'
-import Trending from '../components/Trending'
-import Subscription from '../components/subscription'
+import Herobanner from '../components/startpage/Herobanner'
+import Bestsellers from '../components/startpage/Bestsellers'
+import Offers from '../components/startpage/Offers'
+import Trending from '../components/startpage/Trending'
+import Subscription from '../components/startpage/Subscription'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getProducts } from '../store/features/products/productsSlice'
-import Productlisting from '../components/Productlisting'
+
 
 
 const Home = () => {
+
+  // Create a reference to the Redux dispatch function
   const dispatch = useDispatch()
 
+  // Use useEffect hook to dispatch the action to get products on component mount
   useEffect(() => {
     console.log('dispatching getProducts');
-    dispatch(getProducts())
-  }, [])
+    dispatch(getProducts()) // Dispatch the action to fetch products when the component mounts
+  }, []) // Empty dependency array ensures this effect runs only once on mount
 
+  // Access the products, error, and loading states from the Redux store
   const { products, error, loading } = useSelector(state => state.productList)
 
+  // Display an error message if there is an error in fetching products
   if (error) {
     return (
       <div>
@@ -27,6 +32,7 @@ const Home = () => {
     )
   }
 
+  // Return the main homepage layout if no error
   return (
     <div>
       <Herobanner />
