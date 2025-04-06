@@ -33,7 +33,7 @@ const ContactForm = () => {
     if (!validate()) return
 
     try {
-      const response = await fetch('https://js2-ecommerce-api.vercel.app/api/messages', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

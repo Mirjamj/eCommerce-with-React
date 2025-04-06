@@ -5,7 +5,7 @@ import Product from '../products/Product'
 const Bestsellers = ({ products }) => {
 
   // Define an array of best-seller product IDs
-  const bestsellerIDs = ['658b33d25b510998a5044748', '658b33155b510998a504473f', '658b352b5b510998a5044751', '658af473d711cabe3c940462']
+  const bestsellerIDs = ['67ebdd2fedc5c8d7b79fba36', '67e68417478b6f48b92926be', '67ebdd26edc5c8d7b79fba34', '67ebdcfeedc5c8d7b79fba2e']
 
   // Filter the products array to include only the products that match the best-seller IDs,
   // and sort the products based on the order of the bestsellerIDs array.

@@ -4,6 +4,11 @@ import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { addToCart } from '../store/features/products/ShoppingCart/shoppingCartSlice'
 
+// Function to format the price using Swedish currency
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('sv-SE').format(price);
+}
+
 const Productpage = () => {
 
   // Extract product_id from the route parameters using useParams hook
@@ -31,7 +36,8 @@ const Productpage = () => {
 
       try {
         // Make an API request to fetch the product details using the product_id
-        const res = await axios.get(`https://js2-ecommerce-api.vercel.app/api/products/${product_id}`)
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/products/${product_id}`)
+
         setProduct(res.data) // Set the fetched product details to state
       } catch (error) {
         setError('Something went wrong....') // Set an error message if the fetch fails
@@ -77,7 +83,7 @@ const Productpage = () => {
         <div className='d-flex justify-content-between align-items-center mt-2 mt-md-0 d-md-block'>
           <h1 className='fs-4'>{product?.name}</h1>
           <div className="price-info d-flex gap-2">
-            <p className='current-price fw-bold'>{product?.price} kr</p>
+            <p className='current-price fw-bold'>{formatPrice(product?.price)} kr</p>
           </div>
         </div>
         <p className='fs-6 d-inline'>

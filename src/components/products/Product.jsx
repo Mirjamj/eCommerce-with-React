@@ -2,6 +2,11 @@ import { Link } from 'react-router'
 import { addToCart } from '../../store/features/products/ShoppingCart/shoppingCartSlice'
 import { useDispatch } from 'react-redux'
 
+// Function to format the price using Swedish currency
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('sv-SE').format(price);
+}
+
 const Product = ({ product = {} }) => {
   const dispatch = useDispatch() // Creating a dispatch function to interact with Redux
 
@@ -18,7 +23,7 @@ const Product = ({ product = {} }) => {
         <p className='ps-2 pt-2 text-truncate'>{product.name}</p>
       </Link>
       <div className='d-flex justify-content-between ps-2'>
-        <p className='current-price'>{product.price} kr</p>
+        <p className='current-price'>{formatPrice(product?.price)}  kr</p>
         <button onClick={handleClick} className='pe-2 bg-transparent border-0'>
           <i className="fa-solid fa-cart-plus pe-2"></i>
         </button>

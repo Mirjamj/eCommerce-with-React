@@ -6,7 +6,7 @@ import Contentcard from './Contentcard'
 const Offers = ({ products }) => {
 
   // Define an array of offer product IDs
-  const offerIDs = ['658b3c1f5b510998a504475d', '658b3b3e5b510998a5044754']
+  const offerIDs = ['67ebdd72edc5c8d7b79fba44', '67ebdd51edc5c8d7b79fba3e']
 
   // Filter the products array to find products with the matching offer IDs
   const offersToShow = products.filter(product => offerIDs.includes(product._id))

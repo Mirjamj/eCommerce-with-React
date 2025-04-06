@@ -13,6 +13,7 @@ const Productlisting = ({ products }) => {
               <Product product={product} />
             </div>
           ))
+
         }
       </div>
     </div>
